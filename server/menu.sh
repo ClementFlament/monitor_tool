@@ -1,4 +1,6 @@
 #!/bin/bash
+# Expand globs to nothing when there is no match to avoid bogus entries
+shopt -s nullglob
 
 DATA_DIR="./data"
 
@@ -28,7 +30,7 @@ main_menu() {
 view_host() {
     OPTIONS=()
     i=1
-    for FILE in "$DATA_DIR"/*; do
+    for FILE in "$DATA_DIR"/*.json; do
         HOSTNAME=$(basename "$FILE" .json)
         OPTIONS+=($i "$HOSTNAME")
         ((i++))
@@ -74,7 +76,7 @@ show_summary() {
 delete_host() {
     OPTIONS=()
     i=1
-    for FILE in "$DATA_DIR"/*; do
+    for FILE in "$DATA_DIR"/*.json; do
         HOSTNAME=$(basename "$FILE" .json)
         OPTIONS+=($i "$HOSTNAME")
         ((i++))
