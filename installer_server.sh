@@ -3,12 +3,12 @@ exec 2> ./log/installer_error.log
 
 INSTALL_DIR="/opt/monitor"
 SERVICE_FILE="/etc/systemd/system/monitor-server.service"
-SCRIPTS=("server.sh" "menu.sh")
+SCRIPTS=("./server/server.sh" "./server/menu.sh")
 
 # Download dependencies
 echo "[INFO] Téléchargement des dépendances"
 apt-get update
-apt install jq dialog 
+apt install jq dialog
 
 # Create installation folder
 echo "[INFO] Création du dossier d'installation..."
