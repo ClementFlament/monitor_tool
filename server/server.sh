@@ -1,5 +1,8 @@
 #!/bin/bash
-exec 2> ./log/server_error.log
+
+LOG_DIR="./log"
+mkdir -p "$LOG_DIR"
+exec 2> "$LOG_DIR/server_error.log"
 
 PORT=9999
 DATA_DIR="./data"
@@ -13,7 +16,7 @@ log() {
 
 # Create the folder if inexistant
 log "[INFO] Check ou création du répertoire $DATA_DIR"
-mkdir $DATA_DIR
+mkdir -p "$DATA_DIR"
 
 # Initiate the server
 log "[INFO] Démarrage du serveur sur le port $PORT"
